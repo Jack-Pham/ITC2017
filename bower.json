@@ -1,0 +1,14 @@
+{
+  "name": "itc2017",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "Christine <christine.tn.nguyen@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "v4.0.0-alpha.6"
+  }
+}
