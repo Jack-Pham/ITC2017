@@ -13,3 +13,9 @@ Daily Workflow
 1) git pull
 2) npm install
 3) bower install
+4) Run server
+
+How to Run Server
+-----------------
+- Through IDE: Run > Run [If this doesn't work, try 'Edit Configurations' > JavaScript file: bin/www]
+- Through Command Line: node bin/www
