@@ -9,11 +9,12 @@ function initMap() {
 
   map = new google.maps.Map(document.getElementById('map'), {
     center: origin,
-    zoom: 10
+    zoom: 10,
+    mapTypeControl: false
   });
 
-  // Initialize autocomplete search bar
-  initAutocomplete();
+  initAutocomplete(); // Search bar
+  initControls();     // Controls menu on map
 }
 
 
@@ -42,3 +43,19 @@ function initAutocomplete() {
 
 } // end initAutocomplete()
 
+
+/* ====== Controls menu ====== */
+function initControls() {
+  // Use menu div container and call MenuControl() to create a control
+  var menuCard = document.getElementById("menu-card");
+  var menuControl = new MenuControl(menuCard, map);
+
+  menuCard.index = 1;
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(menuCard); 
+}
+/**
+ * 
+ */
+function MenuControl(controlDiv, map) {
+  // assign event listeners here
+}

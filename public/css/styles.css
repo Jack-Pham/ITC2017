@@ -25,4 +25,17 @@ html, body {
 }
 
 
-
+/* ====== Menu buttons ======*/
+#menu-card ul {
+	list-style-type: none;
+}
+#menu-card li {
+	float: left;
+	background-color: #ddd;
+	padding: 10px;
+	text-align: center;
+}
+#menu-card li:hover {
+    background-color: #fff;
+    cursor: pointer;
+}
