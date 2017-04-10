@@ -1,9 +1,16 @@
 var express = require('express');
 var router = express.Router();
+var path = require('path');
 
-/* GET home page. */
+/* GET index page */
 router.get('/', function(req, res, next) {
-  res.render('index');
+	res.render('index');
 });
+
+/* GET home page */
+router.get('/home', function(req, res, next) {
+	res.sendFile(path.join(__dirname, '../', 'views', 'home.html'));
+});
+
 
 module.exports = router;

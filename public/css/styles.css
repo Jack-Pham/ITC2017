@@ -1,0 +1,28 @@
+/* styles.css */
+
+html, body {
+	height: 100%;
+	margin: 0;
+    padding: 0;
+}
+
+.container {
+	width: 100%;
+	height: 100%;
+}
+
+#section-search {
+	background-color: gray;
+}
+
+#section-map {
+	height: 100%;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+}
+
+
+
