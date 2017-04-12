@@ -17,6 +17,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, '/public')));
 app.use('/bootstrap', express.static(path.join(__dirname + '/bower_components/bootstrap/dist/')));
 app.use('/jquery', express.static(path.join(__dirname + '/bower_components/jquery/dist/')));
+app.use('/fontawesome', express.static(path.join(__dirname + '/bower_components/fontawesome/')));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

@@ -1,11 +1,13 @@
 /* map.js */
 
 var map;
+var infowindow;
 var origin;
 var marker;
 
 function initMap() {
   origin = new google.maps.LatLng(34.0565, -117.8215);
+  infowindow = new google.maps.InfoWindow();
 
   map = new google.maps.Map(document.getElementById('map'), {
     center: origin,
@@ -35,10 +37,7 @@ function initAutocomplete() {
     // Otherwise, zoom to desired place
     map.setCenter(place.geometry.location);
     map.setZoom(17);
-    marker = new google.maps.Marker({ // display marker
-      map: map,
-      position: place.geometry.location
-    });
+    createMarker(place);
   })
 
 } // end initAutocomplete()
@@ -53,9 +52,53 @@ function initControls() {
   menuCard.index = 1;
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(menuCard); 
 }
-/**
- * 
- */
+
 function MenuControl(controlDiv, map) {
-  // assign event listeners here
+  // Setup the click event listeners
+  createSchoolsCtrl();
+}
+
+
+function createSchoolsCtrl() {
+  var schoolsCtrl = document.getElementById("m-schools");
+
+  schoolsCtrl.addEventListener('click', function() {
+    var service = new google.maps.places.PlacesService(map);
+
+    // icon to display: school
+    var icon = {
+      url: 'https://developers.google.com/maps/documentation/javascript/images/circle.png',
+      anchor: new google.maps.Point(10, 10),
+      scaledSize: new google.maps.Size(10, 17)
+    }
+
+    service.nearbySearch({
+      location: map.getCenter(),
+      radius: 4000,
+      type: ['school']
+    }, function(results, status) {
+      // if successful, create marker for each result
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+          for (var i = 0; i < results.length; i++) {
+            createMarker(results[i], icon);
+          }
+        }
+    });
+  });
+}
+
+
+function createMarker(place, icon) {
+  // create marker 
+  var marker = new google.maps.Marker({
+    map: map,
+    position: place.geometry.location,
+    icon: icon
+  });
+
+  // display related info when user clicks on marker
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.setContent(place.name);
+    infowindow.open(map, this);
+  });
 }
