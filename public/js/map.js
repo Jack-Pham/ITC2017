@@ -3,7 +3,7 @@
 var map;
 var infowindow;
 var origin;
-var marker;
+var markers = [];
 
 function initMap() {
   origin = new google.maps.LatLng(34.0565, -117.8215);
@@ -37,8 +37,11 @@ function initAutocomplete() {
     // Otherwise, zoom to desired place
     map.setCenter(place.geometry.location);
     map.setZoom(17);
-    createMarker(place);
-  })
+    var marker = new google.maps.Marker({
+      map: map,
+      position: place.geometry.location
+    });
+  });
 
 } // end initAutocomplete()
 
@@ -63,6 +66,11 @@ function createSchoolsCtrl() {
   var schoolsCtrl = document.getElementById("m-schools");
 
   schoolsCtrl.addEventListener('click', function() {
+    // clear markers if user has clicked on schools control again.
+    // this makes sure that old markers are removed in case map bounds have changed
+    if (markers.length != 0)
+      clearMarkers();
+
     var service = new google.maps.places.PlacesService(map);
 
     // icon to display: school
@@ -79,21 +87,24 @@ function createSchoolsCtrl() {
     }, function(results, status) {
       // if successful, create marker for each result
       if (status === google.maps.places.PlacesServiceStatus.OK) {
-          for (var i = 0; i < results.length; i++) {
-            createMarker(results[i], icon);
-          }
+        for (var i = 0; i < results.length; i++) {
+          createMarker(results[i], icon);
         }
+      }
     });
+
+    map.setZoom(13);
   });
 }
 
 
 function createMarker(place, icon) {
-  // create marker 
+  // Create a marker for each place.
   var marker = new google.maps.Marker({
     map: map,
-    position: place.geometry.location,
-    icon: icon
+    icon: icon,
+    title: place.name,
+    position: place.geometry.location
   });
 
   // display related info when user clicks on marker
@@ -101,4 +112,14 @@ function createMarker(place, icon) {
     infowindow.setContent(place.name);
     infowindow.open(map, this);
   });
+
+  markers.push(marker);  
+}
+
+function clearMarkers() {
+  // Clear out the old markers.
+  markers.forEach(function(marker) {
+    marker.setMap(null);
+  });
+  markers = [];
 }
