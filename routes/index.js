@@ -8,8 +8,9 @@ router.get('/', function(req, res, next) {
 });
 
 /* GET home page */
+
 router.get('/home', function(req, res, next) {
-	res.sendFile(path.join(__dirname, '../', 'views', 'home.html'));
+	res.render('home');
 });
 
 

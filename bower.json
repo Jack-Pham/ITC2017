@@ -4,13 +4,14 @@
   "main": "app.js",
   "authors": [
     "Christine <christine.tn.nguyen@gmail.com>",
-    "Nelly Liu Peng <nliupeng@gmail.com>"
+    "Nelly Liu Peng <nliupeng@gmail.com>",
+    "Thong Pham <pham@cpp.edu>"
   ],
   "license": "MIT",
   "homepage": "",
   "private": true,
   "dependencies": {
-    "bootstrap": "v4.0.0-alpha.6",
+    "bootstrap": "3.3.7",
     "fontawesome": "~4.7.0"
   }
 }
