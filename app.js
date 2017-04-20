@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
+var home = require('./routes/home');
 
 var app = express();
 
@@ -15,6 +16,7 @@ app.set('view engine', 'ejs');
 
 // set public folders
 app.use(express.static(path.join(__dirname, '/public')));
+app.use('/tether', express.static(path.join(__dirname + '/bower_components/tether/dist/')));
 app.use('/bootstrap', express.static(path.join(__dirname + '/bower_components/bootstrap/dist/')));
 app.use('/jquery', express.static(path.join(__dirname + '/bower_components/jquery/dist/')));
 app.use('/fontawesome', express.static(path.join(__dirname + '/bower_components/fontawesome/')));
@@ -28,6 +30,7 @@ app.use(cookieParser());
 
 // routes
 app.use('/', index);
+app.use('/home', home);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
