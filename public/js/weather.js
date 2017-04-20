@@ -3,49 +3,58 @@ $(document).ready(function(){
     var place = readCookie('location');
     //eraseCookie('location');
     $("#place-input").val(place);
+    getWeather();
     $('#submitWeather').click(function(){
-      var city = $("#place-input").val();
-      createCookie('location',city,4);
-      if (city != ''){
-        $.ajax({
-          url: 'http://api.openweathermap.org/data/2.5/forecast/daily?q=' + city + "&cnt=6" + "&units=imperial"
-          + "&APPID=2916cc1ba04525c0b8623bc99bdadc30",
-          type: "GET",
-          dataType: "jsonp",
-          success: function(data){
-              console.log(data);
-              var widgetTitle = showTitle(data);
-              $("#showTitle").html(widgetTitle);
-
-              var day1 = showday1(data);
-              $("#showday1").html(day1);
-              var widget1 = show1(data);
-              $("#show1").html(widget1);
-
-              var day2 = showday2(data);
-              $("#showday2").html(day2);
-              var widget2 = show2(data);
-              $("#show2").html(widget2);
-
-              var day3 = showday3(data);
-              $("#showday3").html(day3);
-              var widget3 = show3(data);
-              $("#show3").html(widget3);
-
-              var day4 = showday4(data);
-              $("#showday4").html(day4);
-              var widget4 = show4(data);
-              $("#show4").html(widget4);
-              //$("#place-input").val('');
-          }
-        });
+      var element = document.getElementById('showWeather');
+      if (element.style.display === 'none') {
+          element.style.display = '';
+      } else {
+          element.style.display = 'none';
       }
-      else{
-        $("#error").hmtl('Field cannot be empty');
-      }
-      document.getElementById('showWeather').style.display = '';
     })
 });
+
+function getWeather(){
+    var city = $("#place-input").val();
+    createCookie('location',city,4);
+    if (city != ''){
+        $.ajax({
+            url: 'http://api.openweathermap.org/data/2.5/forecast/daily?q=' + city + "&cnt=6" + "&units=imperial"
+            + "&APPID=2916cc1ba04525c0b8623bc99bdadc30",
+            type: "GET",
+            dataType: "jsonp",
+            success: function(data){
+                console.log(data);
+                var widgetTitle = showTitle(data);
+                $("#showTitle").html(widgetTitle);
+
+                var day1 = showday1(data);
+                $("#showday1").html(day1);
+                var widget1 = show1(data);
+                $("#show1").html(widget1);
+
+                var day2 = showday2(data);
+                $("#showday2").html(day2);
+                var widget2 = show2(data);
+                $("#show2").html(widget2);
+
+                var day3 = showday3(data);
+                $("#showday3").html(day3);
+                var widget3 = show3(data);
+                $("#show3").html(widget3);
+
+                var day4 = showday4(data);
+                $("#showday4").html(day4);
+                var widget4 = show4(data);
+                $("#show4").html(widget4);
+                //$("#place-input").val('');
+            }
+        });
+    }
+    else{
+        $("#error").hmtl('Field cannot be empty');
+    }
+}
 
 function showTitle1(data){
   return '<div class="container">' +
