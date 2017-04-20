@@ -44,6 +44,7 @@ body {
 	font-weight: bold;
 	color: #1E90FF;
 	font-size: 40px;
+	line-height: 42px;
 }
 
 .container { position:relative; }
@@ -391,12 +392,7 @@ header { background:white; width:100%; position:relative; z-index:1000; }
 	min-width:200px;
 	position:relative;
 	z-index:1000;
-}
-.navbar-brand {
-	display:inline-block;
-	height:auto;
-	min-height:83px;
-	padding-left:0px;
+	height:83px;
 }
 .navbar-brand img { max-width:100%; }
 
@@ -522,18 +518,22 @@ header { background:white; width:100%; position:relative; z-index:1000; }
 	background:#787c8a url(../images/page-banner-default3.jpg) no-repeat center;
 	background-size:cover;
 	color:white;
-	padding-top:160px;
-	padding-bottom:40px;
 	letter-spacing:0.5px;
 	position:relative;
 	z-index:1;
+	height: calc(100% - 83px - 58px);
 }
 .subheader h1 {
+	display: inline;
 	margin-bottom:0px;
 	font-weight:700;
 	font-size:40px;
 	color:white;
 	float:left;
+}
+
+.subheader .typed-cursor {
+	font-size:40px;
 }
 
 .subheader .breadcrumb {
@@ -551,7 +551,9 @@ header { background:white; width:100%; position:relative; z-index:1000; }
 /** SIMPLE SEARCH **/
 .subheader.simple-search {
 	text-align:center;
-	padding:200px 0px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	background-image:url(../images/simple-search-bg.jpg);
 }
 .subheader.simple-search h1 { float:none; font-size:48px; font-weight:700; }
