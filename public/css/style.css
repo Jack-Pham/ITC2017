@@ -49,7 +49,7 @@ body {
 
 .container { position:relative; }
 
-.module { position:relative; padding:30px 0px 30px 0px; background:#787c8a url(../images/pattern.jpg) no-repeat center;}
+.module { position:relative; padding:40px 0; background:#787c8a url(../images/pattern.jpg) no-repeat center; background-size:cover}
 .module.no-padding { padding:0; }
 .module.no-padding-top { padding-top:0; }
 .module.no-padding-bottom { padding-bottom:0; }
@@ -238,6 +238,9 @@ textarea.border,
 	right:13px;
 	top:10px;
 	color:#97aab7;
+}
+.search-form #place-input {
+    margin-bottom: 0;
 }
 
 /* SOCIAL ICONS */
