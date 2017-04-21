@@ -4,14 +4,12 @@
     <% include partials/head.ejs %>
     <title><%= title %></title>
 
-    <!-- JavaScript file links -->
-    <script src="js/amenities.js"></script>
-    <script src="js/weather.js"></script>
-    <script src="js/map.js"></script>
 </head>
 <body>
 
-<% include partials/header.ejs %>
+</head>
+<body>
+
 <!-- Modal for amenities-->
 <div id="amenitiesModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -37,20 +35,23 @@
 <section class="module">
   <div class="container">
 	<div class="row">
+    <div class="col-lg-3 col-md-3">
+      <a href="/" id="trullow">Trullow</a>
+    </div>
 		<div class="col-lg-4 col-md-4">
       <div class="search-form">
         <input type="text" id="place-input" name="city" placeholder="Search..." />
         <button type="submit"><i class="fa fa-search"></i></button>
       </div>
 		</div>
-    <div class="col-lg-8 col-md-8">
+    <div class="col-lg-5 col-md-5">
       <button id="submitWeather" type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
           Weather
       </button>
       <button onclick="createSchoolsCtrl()" type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
           School
       </button>
-      <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+      <button onclick="createCrime()" id="showImage" type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
           Crime
       </button>
       <button class="btn btn-primary " type="button" data-toggle="modal" data-target="#amenitiesModal">
@@ -79,11 +80,31 @@
           <div id="show4"></div>
       </div>
     </div><!-- end filter -->
+    <div class="crime">
+      <img class="img-responsive" src="images/crime.png" style="height: 500px" id="showCrime">
+    </div>
 
 
   </div><!-- end container -->
 </section>
 
 <% include partials/footer.ejs %>
+
 </body>
+<script src="js/amenities.js"></script>
+<script src="js/weather.js"></script>
+<script src="js/map.js"></script>
+<script>
+$(document).ready(function(){
+    var x = document.getElementById('showCrime');
+    x.style.display = 'none';
+    $("#showImage").click(function(){
+      if (x.style.display === 'none') {
+        x.style.display = '';
+      } else {
+          x.style.display = 'none';
+      }
+    })
+});
+</script>
 </html>
