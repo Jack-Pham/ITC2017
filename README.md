@@ -54,6 +54,10 @@ service.nearbySearch({
 ```
 
 ### Crime
+Utilized Spot Crime API to display in map information regarding crime in nearby area.
+- type of crime (arrest, arson, assault, burglary, robbery, shooting, theft, vandalism, other)
+- address of incident
+- date and time of incident
 
 ### Amenities
 `yelp.js` created to expose a REST interface used to simplify calls to the Yelp API from the front end `amenities.js`. Used information returned from the API call such as ratings, distance, and address to populate map. An user is prompted a pop up modal to input the desired amenity to search for. The application automatically displays a suggested amenity option based on the user's input, and displays appropriates markers on the map with given results. When marker is clicked, it displays the following information of the given location:
@@ -64,7 +68,10 @@ service.nearbySearch({
 - an external url to Yelp
 
 ### Transportation
-Google Maps API 
+Google Maps API to display the following markers in the map:
+-
+-
+-
 
 ## Technologies Used
 Open sources used so far:
