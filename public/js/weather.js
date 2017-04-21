@@ -1,15 +1,15 @@
 $(document).ready(function(){
-    document.getElementById('showWeather').style.display = 'none';
+    var x = document.getElementById('showWeather');
+    x.style.display = 'none';
     var place = readCookie('location');
-    //eraseCookie('location');
     $("#place-input").val(place);
     getWeather();
     $('#submitWeather').click(function(){
-      var element = document.getElementById('showWeather');
-      if (element.style.display === 'none') {
-          element.style.display = '';
+      getWeather();
+      if (x.style.display === 'none') {
+        x.style.display = '';
       } else {
-          element.style.display = 'none';
+          x.style.display = 'none';
       }
     })
 });
