@@ -21,6 +21,17 @@ Trullow (ITC 2017)
 ## Features
 
 ### Weather
+Utilized Openweathermap API, and created `weather.js` to make Ajax request to the server and return data to the front end.
+The map in the front end uses a Bootstrap Carrousel modal to display weather information for the next following days, including:
+- weather
+- description
+- day temperature
+- pressure
+- humidity
+- minimum temperature
+- maximum temperature
+- wind speed
+- wind direction
 
 ### School
 `school.js` contains the createSchoolsCtrl() function called from the home page to display the places labeled as "school" or "university" on the map. The Places library from the Google Maps API is used to make a search for the nearby places within 8000 meters from the given current map's viewpoint. 
@@ -53,6 +64,7 @@ service.nearbySearch({
 - an external url to Yelp
 
 ### Transportation
+Google Maps API 
 
 ## Technologies Used
 Open sources used so far:
