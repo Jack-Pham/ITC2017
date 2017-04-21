@@ -69,9 +69,10 @@ Utilized Spot Crime API to display in map information regarding crime in nearby 
 
 ### Transportation
 Google Maps API to display the following markers in the map:
--
--
--
+- airport
+- subway
+- transit station
+- train station
 
 ## Technologies Used
 Open sources used so far:
