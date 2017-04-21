@@ -690,9 +690,9 @@ header { background:white; width:100%; position:relative; z-index:1000; }
 .subheader.subheader-slider .slider-advanced .slide .button.small.grey { color:white; margin-right:10px; background:#bcc3d8; }
 
 /** SUBHEADER GOOGLE MAPS **/
-.subheader.google-maps { background:#e1e5f1; padding:0; height:750px; position:static; }
+.subheader.google-maps { background:#e1e5f1; padding:0; height:calc(100vh - 62px - 58px); position:static; }
 .subheader.google-maps .container { position:static;}
-#map { width:100%; height:750px; position:absolute; z-index:0; }
+#map { width:100%; height:calc(100vh - 62px - 58px);; position:absolute; z-index:0; }
 .info-box-img { width:180px; margin-right:20px; float:left;  }
 .info-box p { color:black; }
 
