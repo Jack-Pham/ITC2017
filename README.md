@@ -47,3 +47,19 @@ service.nearbySearch({
 ### Amenities
 
 ### Transportation
+
+## Technologies Used
+Open sources used so far:
+* [Google Maps API](https://developers.google.com/maps/documentation/javascript/) - Customize maps with your own content and imagery
+* [Open Weather Map](http://openweathermap.org/api) - A simple, clear and free weather API
+* [Spot Crime](https://github.com/contra/spotcrime) - API client for crime statistics 
+* [Yelp Fusion](https://www.yelp.com/developers) - Yelp API to unlock a wealth of content and data from over 50 million businesses
+* [Bower](https://bower.io/) - A package manager for the web
+
+## Contributors
+
+* [Cesar Gonzalez](https://github.com/gonzalez2) fdfsfs
+* [Nelly Liu Peng](https://github.com/nliupeng)
+* [Oscar Nevarez](https://github.com/OscarNevarez)
+* [Christine Nguyen](https://github.com/c-nguyen)
+* [Thong Pham](https://github.com/Jack-Pham)
