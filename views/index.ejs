@@ -17,8 +17,10 @@
 
     <div class="simple-search-form">
       <div class="tabs">
-          <input type="text" id="pac-input" class="controls" placeholder="Enter an address..." />
+
+          <input type="text" id="place-input" class="controls" placeholder="Enter an address..." />
           <input type="submit" value="GO" onClick="doAjaxRequest()" />
+
       </div>
     </div>
 
@@ -30,14 +32,11 @@
 <script>
     google.maps.event.addDomListener(window, 'load', initialize);
     function initialize() {
-        var input = document.getElementById('pac-input');
+        var input = document.getElementById('place-input');
         var autocomplete = new google.maps.places.Autocomplete(input);
         autocomplete.addListener('place_changed', function () {
             var place = autocomplete.getPlace();
-            console.log(place);
-            console.log(place.geometry['location'].lat());
-            console.log(place.geometry['location'].lng());
-            createCookie('location',$("#pac-input").val(),4);
+            createCookie('location',$("#place-input").val(),4);
             createCookie('lat',place.geometry['location'].lat(),4);
             createCookie('lng',place.geometry['location'].lng(),4);
             window.location.href = '/home';
