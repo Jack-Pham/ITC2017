@@ -47,7 +47,7 @@ body {
 	line-height: 42px;
 }
 
-.container { position:relative; }
+.container { position:relative;}
 
 .module { position:relative; padding:10px 0px 10px 0px; background:#F0F8FF no-repeat center; background-size:cover}
 .module.no-padding { padding:0; }
@@ -230,7 +230,7 @@ textarea.border,
 .form-block label { display:block; }
 .form-block label .error { color:red; font-size:12px; margin-left:10px; }
 
-.search-form { position:relative; }
+.search-form { position:relative;}
 .search-form button[type="submit"] {
 	border:none;
 	background:none;
@@ -690,9 +690,9 @@ header { background:white; width:100%; position:relative; z-index:1000; }
 .subheader.subheader-slider .slider-advanced .slide .button.small.grey { color:white; margin-right:10px; background:#bcc3d8; }
 
 /** SUBHEADER GOOGLE MAPS **/
-.subheader.google-maps { background:#e1e5f1; padding:0; height:800px; position:static; }
+.subheader.google-maps { background:#e1e5f1; padding:0; height:750px; position:static; }
 .subheader.google-maps .container { position:static;}
-#map { width:100%; height:800px; position:absolute; z-index:0; }
+#map { width:100%; height:750px; position:absolute; z-index:0; }
 .info-box-img { width:180px; margin-right:20px; float:left;  }
 .info-box p { color:black; }
 
@@ -782,6 +782,18 @@ header { background:white; width:100%; position:relative; z-index:1000; }
 	float:right;
 	color:#464646;
 }
+
+.google-maps .crime {
+	padding:20px;
+	margin-top:20px;
+	width:20%;
+	position:relative;
+	z-index:100;
+
+	float:left;
+	color:#464646;
+}
+
 .google-maps .filter .filter-toggle { display:none; cursor:pointer; padding:20px; color:white; font-weight:700; }
 .google-maps .filter-item { width:100%; float:none; }
 .google-maps .filter-item:nth-last-child(2) input { margin-bottom:0px; }
