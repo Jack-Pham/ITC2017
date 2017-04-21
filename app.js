@@ -4,11 +4,14 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var yelp = require('./lib/amenities/yelp.js');
 
 var index = require('./routes/index');
 var home = require('./routes/home');
 
 var app = express();
+
+app.use(yelp);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

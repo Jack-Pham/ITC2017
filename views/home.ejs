@@ -5,12 +5,34 @@
     <title><%= title %></title>
 
     <!-- JavaScript file links -->
+    <script src="js/amenities.js"></script>
     <script src="js/weather.js"></script>
     <script src="js/map.js"></script>
 </head>
 <body>
 
 <% include partials/header.ejs %>
+<!-- Modal for amenities-->
+<div id="amenitiesModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Amenities Search</h4>
+      </div>
+      <div class="modal-body">
+         <textarea id="textInputModal" style="font-size: 18px;" class="form-control" rows="2" id="comment"></textarea>
+         <h4 id="autoCompleteHeader"> </h4>
+      </div>
+      <div class="modal-footer">
+        <button id="submitModal" type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <section class="module">
   <div class="container">
@@ -30,6 +52,9 @@
       </button>
       <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
           Crime
+      </button>
+      <button class="btn btn-primary " type="button" data-toggle="modal" data-target="#amenitiesModal">
+        Amenities
       </button>
     </div>
 	</div><!-- end row -->
