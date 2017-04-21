@@ -1,16 +1,13 @@
 var map;
 var request;
 var service;
-var drawn_shape;
 var infowindow;
 var searchBox;
 var pricing;
 var rating;
-var free_polygon;
 var price_filter = false;
 var rate_filter = false;
 var side_bar_out = false;
-var markers = [];
 var places_array = [];
 var earthRadius = 6378137.0;
 var initLat;
@@ -185,7 +182,7 @@ function createCrimeMarker(crime){
   });
 
   google.maps.event.addListener(crimeMarker, 'click', function() {
-    infowindow.setContent('<div><strong>' + crime.type + '</strong><br><p>'
+    infowindow.setContent('<div style="color: #000;"><strong>' + crime.type + '</strong><br><p>'
                                           + crime.address + '</p><br><p>' + crime.date + '</p></div>');
     infowindow.open(map, this);
   });
