@@ -4,14 +4,15 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var yelp = require('./lib/amenities/yelp.js');
+//var yelp = require('./lib/amenities/yelp.js');
+
 
 var index = require('./routes/index');
 var home = require('./routes/home');
 
 var app = express();
 
-app.use(yelp);
+//app.use(yelp);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -34,6 +35,8 @@ app.use(cookieParser());
 // routes
 app.use('/', index);
 app.use('/home', home);
+app.use('/crime', home);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -52,5 +55,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
 
 module.exports = app;
