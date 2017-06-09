@@ -8,7 +8,7 @@ var initLng;
 var marker;
 var crimeMarkers = [];
 var crimeMarker;
-var transportationMarkers = [];
+
 
 //intialize the map
 function initialize() {
@@ -23,7 +23,7 @@ function initialize() {
   marker = new google.maps.Marker({
     map: map,
     position: new google.maps.LatLng(initLat,initLng),
-    icon: 'images/point.png'
+    icon: 'images/map-marker.ico'
   });
 
   initAutocomplete();
@@ -52,10 +52,13 @@ function initAutocomplete() {
     marker = new google.maps.Marker({
       map: map,
       position: place.geometry.location,
-      icon: 'images/point.png'
+      icon: 'images/map-marker.ico'
     });
     document.getElementById('showWeather').style.display = 'none';
     document.getElementById('showCrime').style.display = 'none';
+    clearMarkers();
+    clearCrimeMarkers();
+    clearTransportationMarkers();
   });
 
 } // end initAutocomplete()
@@ -63,7 +66,7 @@ function initAutocomplete() {
 function create_map(center){
     return new google.maps.Map(document.getElementById('map'),{
         center: center,zoom:13,
-        scrollwheel: false,
+        scrollwheel: true,
         zoomControlOptions: {
             position: google.maps.ControlPosition.RIGHT_CENTER
         },
@@ -81,14 +84,21 @@ function createCrime(){
   }
   else {
     var address = map.getCenter();
+    var radius = 0.05;
+    var url = "http://api.spotcrime.com/crimes.json?";
+    url += "lat="+address.lat();
+    url += "&lon="+address.lng();
+    url += "&radius="+radius;
+    url += "&callback=?"
+    url += "&key=privatekeyforspotcrimepublicusers-commercialuse-877.410.1607";
+
     $.ajax({
-      url: '/crime',
-      type: 'POST',
-      data: {"lat":address.lat(), "lng":address.lng()},
+      url: url,
+      type: 'GET',
       dataType: "json",
       success: function(data){
-        for (var i = 0; i < data.length; i++){
-          createCrimeMarker(data[i]);
+        for (var i = 0; i < data.crimes.length; i++){
+          createCrimeMarker(data.crimes[i]);
         };
       }
     });
@@ -97,7 +107,7 @@ function createCrime(){
 }
 
 function createCrimeMarker(crime){
-  console.log(crime);
+  //console.log(crime);
   var crimeIcon = {
     url: imageForType(crime.type),
     anchor: new google.maps.Point(20, 20),
@@ -112,8 +122,8 @@ function createCrimeMarker(crime){
   });
 
   google.maps.event.addListener(crimeMarker, 'click', function() {
-    infowindow.setContent('<div style="color: #000;"><strong>' + crime.type + '</strong><br><p>'
-                                          + crime.address + '</p><br><p>' + crime.date + '</p></div>');
+    infowindow.setContent("<div class='info-box'><h5>"+crime.type+"</h5><p>"+crime.address+"</p><p>"
+                            +crime.date+"</p><p><a href="+crime.link+" class='button small'>More information</a></p></div>");
     infowindow.open(map, this);
   });
 
@@ -144,84 +154,3 @@ function imageForType(type) {
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
-
-function toggleTransportation() {
-  if (transportationMarkers.length == 0) {
-    createTransportation();
-  } else {
-    clearTransportationMarkers();
-  }
-}
-
-function createTransportation() {
-  var request = {
-    location: map.getCenter(),
-    radius: '40233.6', // 25 miles
-    types: ['airport', 'subway_station', 'train_station', 'transit_station']
-  };
-  service = new google.maps.places.PlacesService(map);
-  service.nearbySearch(request, transportCallback);
-}
-
-function transportCallback(results, status) {
-  var icons = {
-    airport: {
-      url: 'images/airplane.png',
-      anchor: new google.maps.Point(30, 30),
-      scaledSize: new google.maps.Size(30, 30)
-    },
-    subway_station: {
-      url: 'images/subway.png',
-      anchor: new google.maps.Point(30, 30),
-      scaledSize: new google.maps.Size(30, 30)
-    },
-    train_station: {
-      url: 'images/train.png',
-      anchor: new google.maps.Point(30, 30),
-      scaledSize: new google.maps.Size(30, 30)
-    },
-    transit_station: {
-      url: 'images/bus.png',
-      anchor: new google.maps.Point(30, 30),
-      scaledSize: new google.maps.Size(30, 30)
-    },
-    default_trans: {
-      url: 'images/default-transport.png',
-      anchor: new google.maps.Point(40, 20),
-      scaledSize: new google.maps.Size(40, 20)
-    }
-  };
-
-  if (status == google.maps.places.PlacesServiceStatus.OK) {
-    for (var i = 0; i < results.length; i++) {
-      createTransportMarker(results[i], icons);
-    }
-  }
-}
-
-function createTransportMarker(place, icons) {
-  var type = place.types[0];
-  if (type != 'airport' && type != 'subway_station' && type != 'train_station' && type != 'transit_station') {
-    type = 'default_trans';
-  }
-  console.log(type);
-  var marker = new google.maps.Marker({
-    map: map,
-    position: place.geometry.location,
-    icon: icons[type]
-  });
-  transportationMarkers.push(marker);
-
-  google.maps.event.addListener(marker, 'click', function() {
-    infowindow.setContent(place.name);
-    infowindow.open(map, this);
-  });
-}
-
-function clearTransportationMarkers() {
-  // Clear out the old markers.
-  transportationMarkers.forEach(function(marker) {
-    marker.setMap(null);
-  });
-  transportationMarkers = [];
-}

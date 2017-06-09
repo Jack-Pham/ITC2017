@@ -1,5 +1,5 @@
 var amenitiesMarkers = [];
-var domain = "http://localhost:3000";
+//var domain = "http://localhost:3000";
 $(document).ready(function(){
   $("#textInputModal").keyup(function(){
         getAutoComplete()
@@ -17,13 +17,13 @@ $(document).ready(function(){
 function createAmenitiesCtrl(category) {
 
      var address = document.getElementById("place-input");
-     var url = domain+"/yelp_amenities/" +address.value + "/" + category;
+     var url = "/yelp_amenities/" +address.value + "/" + category;
      $.get(url,processData);
 }
 
 function getAutoComplete(){
     var textBox = document.getElementById("textInputModal");
-    var url = domain+"/yelp_amenities/" +textBox.value;
+    var url = "/yelp_amenities/" +textBox.value;
     $.get(url,manipulateAmenityModal)
 }
 
@@ -39,7 +39,7 @@ function processData(data,status,xhr){
     var markers = [];
     var latLng;
     var marker;
-   
+
     clearAmenitiesMarkers();
 
     if(data.length < 15){
@@ -48,9 +48,9 @@ function processData(data,status,xhr){
 
     for (var x = 0; x < results; x++){
         latLng = {lat: data[x].coordinates.latitude, lng: data[x].coordinates.longitude};
-        
+
         makeMarker(latLng, data[x].name, data[x].distance, data[x].rating, data[x].location, data[x].url);
-        
+
     }
 
 }

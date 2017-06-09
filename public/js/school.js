@@ -22,7 +22,7 @@ var infowindow;
       service.nearbySearch({
         location: map.getCenter(),
         radius: 8000,
-        type: ['school', 'university']
+        types: ['school', 'university']
       }, function(results, status) {
         // if successful, create marker for each result
         if (status === google.maps.places.PlacesServiceStatus.OK) {
@@ -38,7 +38,7 @@ var infowindow;
 
   function createMarker(place, icon) {
     // Create a marker for each place.
-
+    console.log(place);
     var marker = new google.maps.Marker({
       map: map,
       icon: icon,
@@ -48,7 +48,8 @@ var infowindow;
 
     // display related info when user clicks on marker
     google.maps.event.addListener(marker, 'click', function() {
-      infowindow.setContent('<div style="color: #000;"><strong>' + place.name + '</strong><br><p>' + place.vicinity + '</p></div>');
+      infowindow.setContent("<div class='info-box'><h5>"+place.name+"</h5><p>"+place.vicinity+"</p><p>Rating: "
+                              +place.rating+"</p></div>");
       infowindow.open(map, this);
     });
 

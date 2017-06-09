@@ -22,7 +22,7 @@ function getWeather(){
             url: 'http://api.openweathermap.org/data/2.5/forecast/daily?q=' + city + "&cnt=6" + "&units=imperial"
             + "&APPID=2916cc1ba04525c0b8623bc99bdadc30",
             type: "GET",
-            dataType: "jsonp",
+            dataType: "json",
             success: function(data){
                 console.log(data);
                 var widgetTitle = showTitle(data);
@@ -69,7 +69,7 @@ function showTitle1(data){
 }
 
 function showTitle(data){
-  return '<h5 style="color: #F0FFFF">Weather Forecast for '+ data.city.name + ", " + data.city.country + '</h5>';
+  return '<h5 style="color: #F0FFFF">Weather Forecast</h5>';
 }
 
 function showday1(data){
@@ -89,11 +89,11 @@ function show1(data){
   return "<p><strong>Weather</strong>: <img src='http://openweathermap.org/img/w/" + data.list[0].weather[0].icon + ".png'>"
          + data.list[0].weather[0].main + "</p>" +
          "<p><strong>Description</strong>: " + data.list[0].weather[0].description + "</p>" +
-         "<p><strong>Day Temperature</strong>: " + data.list[0].temp.day + "&deg;F</p>" +
+         "<p><strong>Day Temperature</strong>: " + Math.round(data.list[0].temp.day) + "&deg;F</p>" +
          "<p><strong>Pressure</strong>: " + data.list[0].pressure + " hPa</p>" +
          "<p><strong>Humidity</strong>: " + data.list[0].humidity + "%</p>" +
-         "<p><strong>Minimum Temperature</strong>: " + data.list[0].temp.min + "&deg;F</p>" +
-         "<p><strong>Maximum Temperature</strong>: " + data.list[0].temp.max+ "&deg;F</p>" +
+         "<p><strong>Minimum Temperature</strong>: " + Math.round(data.list[0].temp.min) + "&deg;F</p>" +
+         "<p><strong>Maximum Temperature</strong>: " + Math.round(data.list[0].temp.max) + "&deg;F</p>" +
          "<p><strong>Wind Speed</strong>: " + data.list[0].speed + " m/h</p>" +
          "<p><strong>Wind Direction</strong>: " + data.list[0].deg + "&deg;</p>";
 }

@@ -42,6 +42,7 @@ body {
 
 #trullow {
 	font-weight: bold;
+	font-family: 'Allan';
 	color: #1E90FF;
 	font-size: 40px;
 	line-height: 42px;
@@ -49,7 +50,7 @@ body {
 
 .container { position:relative;}
 
-.module { position:relative; padding:10px 0px 10px 0px; background:#F0F8FF no-repeat center; background-size:cover}
+.module { position:relative; padding:5px 0px 5px 0px; background:#2F4F4F no-repeat center; background-size:cover}
 .module.no-padding { padding:0; }
 .module.no-padding-top { padding-top:0; }
 .module.no-padding-bottom { padding-bottom:0; }
@@ -80,7 +81,7 @@ body {
 .center { text-align:center; margin:0 auto; }
 .clear { clear:both; }
 .show-none { display:none; }
-.divider { width:100%; height:1px; background:rgba(0, 0, 0, 0.1); margin-bottom:20px; margin-top:20px; }
+.divider { width:100%; height:1px; background:rgba(0, 0, 0, 0.1); margin-bottom:5px; margin-top:5px; }
 .divider-fade {
 	width:100%;
 	height:70px;
@@ -336,14 +337,14 @@ textarea.border,
 /** ACCORDION **/
 .ui-accordion .ui-accordion-header {
 	border:none;
-	margin-bottom:25px;
+	margin-bottom:5px;
 	padding:10px;
 	font-size:18px;
 	font-weight:600;
 	background:white;
 }
 .ui-accordion .ui-accordion-header-active { margin-bottom:0; background:#59aee9; }
-.ui-accordion .ui-accordion-content-active { margin-bottom:25px; }
+.ui-accordion .ui-accordion-content-active { margin-bottom:5px; }
 .ui-accordion .ui-accordion-content { border:none; padding:10px; font-family:'Raleway'; text-align: center;}
 .ui-accordion-header-icon { display:none; }
 .accordion-footer { font-style:italic; font-size:12px; }
@@ -395,7 +396,7 @@ header { background:white; width:100%; position:relative; z-index:1000; }
 	min-width:200px;
 	position:relative;
 	z-index:1000;
-	height:83px;
+	height:55px;
 }
 .navbar-brand img { max-width:100%; }
 
@@ -484,7 +485,7 @@ header { background:white; width:100%; position:relative; z-index:1000; }
 .header-default .header-search td > .fa { display:none; }
 .header-default .header-item td > .fa { color:#59aee9; font-size:36px; margin-right:10px; }
 .header-default .header-item span { font-family:'Open Sans'; font-weight:700; font-size:18px; }
-.header-default .navbar-brand { padding:20px 15px; padding-left:0px; }
+.header-default .navbar-brand { padding:5px 15px; padding-left:0px;}
 .header-default .main-menu-wrap { height:60px; top:0px; width:100%; background:#323746; }
 .header-default .navbar-toggle.fixed { position:fixed; top:0; left:0; margin-top:0; width:100%; background:#323746; border-radius:0px; padding:15px;}
 .header-default .main-menu-wrap.fixed { position:fixed; }
@@ -524,7 +525,7 @@ header { background:white; width:100%; position:relative; z-index:1000; }
 	letter-spacing:0.5px;
 	position:relative;
 	z-index:1;
-	height: calc(100% - 83px - 58px);
+	height: calc(100% - 50px - 50px);
 }
 .subheader h1 {
 	display: inline;
@@ -690,9 +691,9 @@ header { background:white; width:100%; position:relative; z-index:1000; }
 .subheader.subheader-slider .slider-advanced .slide .button.small.grey { color:white; margin-right:10px; background:#bcc3d8; }
 
 /** SUBHEADER GOOGLE MAPS **/
-.subheader.google-maps { background:#e1e5f1; padding:0; height:calc(100vh - 62px - 58px); position:static; }
+.subheader.google-maps { background:#e1e5f1; padding:0; height:calc(100% - 50px - 50px); position:static; }
 .subheader.google-maps .container { position:static;}
-#map { width:100%; height:calc(100vh - 62px - 58px);; position:absolute; z-index:0; }
+#map { width:100%; height:calc(100% - 50px - 50px);; position:absolute; z-index:0; }
 .info-box-img { width:180px; margin-right:20px; float:left;  }
 .info-box p { color:black; }
 
@@ -773,14 +774,15 @@ header { background:white; width:100%; position:relative; z-index:1000; }
 
 /** FILTER GOOGLE MAPS **/
 .google-maps .filter {
-	padding:20px;
-	margin-top:20px;
-	width:30%;
+	padding:10px;
+	margin-top:0px;
+	width:25%;
 	position:relative;
 	z-index:100;
 	background:#48a0dc;
 	float:right;
 	color:#464646;
+	border-radius: 15px;
 }
 
 .google-maps .crime {
@@ -793,6 +795,17 @@ header { background:white; width:100%; position:relative; z-index:1000; }
 	float:left;
 	color:#464646;
 }
+
+.google-maps .weather {
+	padding:20px;
+	margin-top:20px;
+	width:20%;
+	position:relative;
+	z-index:100;
+	float:left;
+	color:#464646;
+}
+
 
 .google-maps .filter .filter-toggle { display:none; cursor:pointer; padding:20px; color:white; font-weight:700; }
 .google-maps .filter-item { width:100%; float:none; }
